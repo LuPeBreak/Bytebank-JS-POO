@@ -5,7 +5,7 @@ class ContaCorrente {
     this.agencia = agencia || 1001;
   }
 
-  saque(valorASerSacado) {
+  sacar(valorASerSacado) {
     if (valorASerSacado <= 0) return;
 
     if (this._saldo < valorASerSacado) {
@@ -22,6 +22,15 @@ class ContaCorrente {
     }
     this._saldo += valorASerDepositado;
     return valorASerDepositado;
+  }
+
+  transferir(valorASerTransferido,contaParaTransferir){
+    const valorSacado = this.sacar(valorASerTransferido)
+    if(!valorSacado){
+      console.log("erro ao sacar da conta")
+      return
+    }
+    contaParaTransferir.depositar(valorSacado);
   }
 }
 
