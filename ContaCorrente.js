@@ -1,4 +1,5 @@
 class ContaCorrente {
+  static numeroDeContas = 0;
   agencia;
   _saldo = 0;
 
@@ -18,6 +19,7 @@ class ContaCorrente {
 
   constructor(agencia) {
     this.agencia = agencia || 1001;
+    ContaCorrente.numeroDeContas += 1;
   }
 
   sacar(valorASerSacado) {
