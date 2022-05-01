@@ -1,6 +1,21 @@
 class ContaCorrente {
   agencia;
   _saldo = 0;
+
+  get agencia() {
+    return this.agencia;
+  }
+
+  set agencia(agencia) {
+    if (typeof agencia != "number") return;
+
+    this.agencia = agencia;
+  }
+
+  get saldo() {
+    return this._saldo;
+  }
+
   constructor(agencia) {
     this.agencia = agencia || 1001;
   }
@@ -24,11 +39,11 @@ class ContaCorrente {
     return valorASerDepositado;
   }
 
-  transferir(valorASerTransferido,contaParaTransferir){
-    const valorSacado = this.sacar(valorASerTransferido)
-    if(!valorSacado){
-      console.log("erro ao sacar da conta")
-      return
+  transferir(valorASerTransferido, contaParaTransferir) {
+    const valorSacado = this.sacar(valorASerTransferido);
+    if (!valorSacado) {
+      console.log("erro ao sacar da conta");
+      return;
     }
     contaParaTransferir.depositar(valorSacado);
   }
